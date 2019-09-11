@@ -112,3 +112,67 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function articlePanel(data) {
+const article = document.createElement('div');
+const title = document.createElement('h2');
+const date = document.createElement('p');
+const firstParagraph = document.createElement('p');
+const secondParagraph = document.createElement('p');
+const thirdParagraph = document.createElement('p');
+const expandButton = document.createElement('span');
+const articleOpen = document.createElement('button');
+const buttonClose = document.createElement('button');
+
+//structure
+article.appendChild(title);
+article.appendChild(date);
+article.appendChild(expandButton);
+article.appendChild(firstParagraph);
+article.appendChild(secondParagraph);
+article.appendChild(thirdParagraph);
+expandButton.appendChild(articleOpen);
+expandButton.appendChild(buttonClose);
+
+
+//set the content
+title.textContent = data.title;
+date.textContent = data.date;
+firstParagraph.textContent = data.firstParagraph;
+secondParagraph.textContent = data.secondParagraph;
+thirdParagraph.textContent = data.thirdParagraph;
+articleOpen.textContent = '\u25bc';
+buttonClose.textContent = '\u25b2'; 
+
+
+//styles
+article.classList.add('article');
+title.classList.add('h2');
+date.classList.add('date');
+firstParagraph.classList.add('p');
+secondParagraph.classList.add('p');
+thirdParagraph.classList.add('p');
+expandButton.classList.add('expand-button');
+buttonClose.classList.add('close');
+// articleOpen.classList.add('article-open');
+
+//event handlers
+
+expandButton.addEventListener('click', event => {
+  article.classList.toggle('article-open');
+});
+
+return article;
+
+}
+
+ let container = document.querySelector('.articles');
+
+ data.forEach((data) => {
+
+  container.appendChild(articlePanel(data));
+
+ })
+
+
+
