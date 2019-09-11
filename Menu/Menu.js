@@ -1,12 +1,12 @@
 /* This is the data we will be using, study it but don't change anything, yet. */
 
 let menuItems = [
-  'Students',
-  'Faculty',
+  "Students",
+  "Faculty",
   "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
+  "Tech Trends",
+  "Music",
+  "Log Out"
 ];
 
 /* 
@@ -35,41 +35,46 @@ let menuItems = [
 */
 
 function menuComponent(menuInfo) {
+  let menu = document.createElement("div");
+  let openButton = document.createElement("button");
+  let unorderedList = document.createElement("ul");
+  let listItems = document.createElement("li");
 
-  let menu = document.createElement('div');
-  let button = document.createElement('menu-button');
-  let list = document.createElement('ul');
-  let item = document.createElement('li');
-  
-
-//structure
-
-  menu.appendChild(list);
-  menu.appendChild(button);
-  button.appendChild(list);
-  list.appendChild(item);
-
-//content
-list.textContent = menuItems;
-
-//styles
-menu.classList.add('div');
-button.classList.add('menu-button');
-list.classList.add('ul');
-item.classList.add('li');
-
-//event handlers
-
-button.addEventListener('click', (e) => {
-  menu.classList.toggle('menu--open');
-})
+  //structure
+  menu.appendChild(unorderedList);
+  menu.appendChild(listItems);
+  menu.appendChild(openButton);
+  unorderedList.appendChild(listItems);
 
 
-return menu;
+  // Cycle over each menu item
+  for (var i = 0; i < menuItems.length; i++) {
+ 
+  //structure 
+  unorderedList.appendChild(listItems);
+
+  //set the content
+  unorderedList.textContent = menuItems;
+  listItems.textContent = menuItems;
+
+   
+  }
+
+  //styles
+  menu.classList.add("menu");
+  unorderedList.classList.add("ul");
+  listItems.classList.add("li");
+  openButton.classList.add("menu--open");
+
+  //event handlers
+  openButton.addEventListener("click", e => {
+    menu.classList.toggle("menu--open");
+  });
+
+  return menu;
 }
 
-const menuButton = document.querySelector('.menu-button');
-
-menuItems.forEach(items => {
-  menuButton.appendChild(menuComponent(items));
-})
+// let div = document.querySelector(".menu");
+// menuItems.forEach(data => {
+//   div.appendChild(menuComponent(data));
+// });
