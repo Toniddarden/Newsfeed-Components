@@ -34,51 +34,53 @@ let menuItems = [
   
 */
 
-function menuComponent(menuInfo) {
-  let header = document.createElement("div");
-  let menu = document.createElement("div");
-  let unorderedList = document.createElement("ul");
-  let listItems = document.createElement("li");
-  let openButton = document.createElement("button");
+function createMenu(itemsArray) {
 
-  //structure
-  header.appendChild(openButton);
-  header.appendChild(menu);
+  const body = document.querySelector('body');
+  const menu = document.createElement('div');
+  const unorderedList = document.createElement('ul');
+
+  body.append(menu);
+  menu.className = 'menu';
   menu.appendChild(unorderedList);
-  unorderedList.appendChild(listItems);
-  
 
 
-  //set the content 
+
+  addMenuItems(itemsArray);
+
+
+
+  menu.addEventListener('click', (e) => {
+    unorderedList.classList.toggle('ul');
+    listItem.classList.toggle('li');
+  })
+
  
-
-listItems.textContent = menuItems;
-
-
-//styles
-header.classList.add('menu-button');
-menu.classList.add('menu');
-unorderedList.classList.add('ul');
-listItems.classList.add('li');
-openButton.classList.add('menu--open');
-
-//event handlers
-
-header.addEventListener('click', (e) => {
-  buttonOpen.classList.toggle('.menu--open');
-  listItems.classList.toggle('li');
-})
-
-
-
-
-return menu;
   
+
+
 }
 
-let parent = document.querySelector('.menu-button');
-menuItems.forEach((menu) => {
-  parent.appendChild(menuComponent(menu));
-})
+function addMenuItems(itemsArray) {
+  let parent = document.querySelector('.menu-button');
+  let ul = document.querySelector('ul'); 
 
-console.log(parent);
+  for (let i = 0; i < itemsArray.length; i++) {
+    const label = itemsArray[i];
+    const listItem = document.createElement('li');
+    listItem.append(label);
+    ul.append(listItem);
+  }
+
+}
+
+createMenu(menuItems);
+// addMenuItems(menuItems);
+
+// let parent = document.querySelector('.menu-button');
+// menuItems.forEach((menu) => {
+//   // !
+//   //parent.appendChild(menuComponent(menu));
+// });
+
+// console.log(parent);
