@@ -35,46 +35,50 @@ let menuItems = [
 */
 
 function menuComponent(menuInfo) {
+  let header = document.createElement("div");
   let menu = document.createElement("div");
-  let openButton = document.createElement("button");
   let unorderedList = document.createElement("ul");
   let listItems = document.createElement("li");
+  let openButton = document.createElement("button");
 
   //structure
+  header.appendChild(openButton);
+  header.appendChild(menu);
   menu.appendChild(unorderedList);
-  menu.appendChild(listItems);
-  menu.appendChild(openButton);
   unorderedList.appendChild(listItems);
+  
 
 
-  // Cycle over each menu item
-  for (var i = 0; i < menuItems.length; i++) {
+  //set the content 
  
-  //structure 
-  unorderedList.appendChild(listItems);
 
-  //set the content
-  unorderedList.textContent = menuItems;
-  listItems.textContent = menuItems;
+listItems.textContent = menuItems;
 
-   
-  }
 
-  //styles
-  menu.classList.add("menu");
-  unorderedList.classList.add("ul");
-  listItems.classList.add("li");
-  openButton.classList.add("menu--open");
+//styles
+header.classList.add('menu-button');
+menu.classList.add('menu');
+unorderedList.classList.add('ul');
+listItems.classList.add('li');
+openButton.classList.add('menu--open');
 
-  //event handlers
-  openButton.addEventListener("click", e => {
-    menu.classList.toggle("menu--open");
-  });
+//event handlers
 
-  return menu;
+header.addEventListener('click', (e) => {
+  buttonOpen.classList.toggle('.menu--open');
+  listItems.classList.toggle('li');
+})
+
+
+
+
+return menu;
+  
 }
 
-// let div = document.querySelector(".menu");
-// menuItems.forEach(data => {
-//   div.appendChild(menuComponent(data));
-// });
+let parent = document.querySelector('.menu-button');
+menuItems.forEach((menu) => {
+  parent.appendChild(menuComponent(menu));
+})
+
+console.log(parent);
