@@ -154,7 +154,7 @@ secondParagraph.classList.add('p');
 thirdParagraph.classList.add('p');
 expandButton.classList.add('expand-button');
 buttonClose.classList.add('close');
-// articleOpen.classList.add('article-open');
+
 
 //event handlers
 
