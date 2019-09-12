@@ -36,7 +36,7 @@ let menuItems = [
 
 function createMenu(itemsArray) {
 
-  const body = document.querySelector('body');
+  const body = document.querySelector('.menu-button');
   const menu = document.createElement('div');
   const unorderedList = document.createElement('ul');
 
@@ -53,8 +53,13 @@ function createMenu(itemsArray) {
   menu.addEventListener('click', (e) => {
     unorderedList.classList.toggle('ul');
     listItem.classList.toggle('li');
+    listItem.classList.toggle('li');
   })
 
+  //styles
+  body.classList.add('menu-button');
+  menu.classList.add('menu');
+  unorderedList.classList.add('ul');
  
   
 
@@ -84,3 +89,6 @@ createMenu(menuItems);
 // });
 
 // console.log(parent);
+
+let menuButton = document.querySelector('.menu-button');
+menuItems.appendChild(createMenu(itemsArray));
